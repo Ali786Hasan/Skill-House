@@ -1,15 +1,14 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Users, Award, PlayCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Users, Award } from 'lucide-react';
 import { ACADEMY_INFO } from '../data/courses';
 import { Logo3D } from './Logo3D';
 
 interface HeroProps {
   onOpenEnrollment: () => void;
-  onOpenVoicePlayer?: () => void;
   lang: 'bn' | 'en';
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment, onOpenVoicePlayer, lang }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment, lang }) => {
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white pt-12 pb-16 lg:pt-20 lg:pb-24">
       {/* Background subtle mesh glow */}
@@ -100,17 +99,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment, onOpenVoicePlayer,
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              {onOpenVoicePlayer && (
-                <button
-                  type="button"
-                  onClick={onOpenVoicePlayer}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-medium text-emerald-300 hover:text-white bg-emerald-950/60 hover:bg-emerald-900/60 rounded-lg border border-emerald-500/40 transition-colors shadow-xs"
-                >
-                  <PlayCircle className="w-4 h-4 text-emerald-400" />
-                  <span>{lang === 'bn' ? 'বাংলা ভয়েস শুনুন (ভিডিও প্রমো)' : 'Listen to Bengali Voice Promo'}</span>
-                </button>
-              )}
-
               <a
                 href="#courses"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-medium text-slate-200 hover:text-white bg-slate-800/80 hover:bg-slate-800 rounded-lg border border-slate-700 transition-colors"
@@ -142,17 +130,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment, onOpenVoicePlayer,
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
-
-                {onOpenVoicePlayer && (
-                  <button
-                    type="button"
-                    onClick={onOpenVoicePlayer}
-                    className="absolute bottom-3 right-3 px-3 py-1.5 bg-slate-950/90 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold backdrop-blur-md border border-slate-700/80 flex items-center gap-1.5 shadow-lg transition-colors cursor-pointer"
-                  >
-                    <PlayCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>বাংলা ভয়েস শুনুন</span>
-                  </button>
-                )}
               </div>
 
               {/* Card Footer Highlights */}

@@ -563,6 +563,8 @@ export const ACADEMY_INFO = {
   bkashNumberAlt: '01601359646',
   nagadNumber: '01601359646',
   rocketNumber: '01601359646',
+  internationalWhatsApp: '+218920818829',
+  whatsappGroupLink: 'https://chat.whatsapp.com/JxjTtBipLgP2CFRA7dmJiO?s=cl&p=a&mlu=4&ilr=4',
   stats: [
     { labelBn: 'সফল গ্র্যাজুয়েট', labelEn: 'Graduates', valueBn: '১,২৫০+', valueEn: '1,250+' },
     { labelBn: 'ক্যারিয়ার সাকসেস রেট', labelEn: 'Success Rate', valueBn: '৮৮%', valueEn: '88%' },

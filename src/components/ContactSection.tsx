@@ -112,15 +112,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenEnrollment
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-col gap-2 pt-2">
               <a
-                href="https://wa.me/8801956434722?text=Hello%20Skill%20House,%20I%20have%20an%20inquiry"
+                href={ACADEMY_INFO.whatsappGroupLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white hover:bg-emerald-500 rounded-lg text-xs font-semibold shadow-sm transition-colors"
+              >
+                <MessageSquare className="w-4 h-4 text-white" />
+                <span>Support Skill Group (WhatsApp Community)</span>
+              </a>
+              <a
+                href="https://wa.me/218920818829?text=Hello%20Skill%20House,%20I%20have%20an%20inquiry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 rounded-lg text-xs font-semibold border border-emerald-200 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
-                <span>সরাসরি হোয়াটসঅ্যাপে চ্যাট করুন (01956434722)</span>
+                <span>WhatsApp Chat (+218 920818829)</span>
               </a>
             </div>
           </div>

@@ -3,23 +3,16 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { CoursesSection } from './components/CoursesSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
-import { LeadershipSection } from './components/LeadershipSection';
-import { AcademyUpdatesSection } from './components/AcademyUpdatesSection';
 import { AdmissionSteps } from './components/AdmissionSteps';
-import { RoiCalculator } from './components/RoiCalculator';
 import { FaqSection } from './components/FaqSection';
-import { NewsletterSection } from './components/NewsletterSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { EnrollmentModal } from './components/EnrollmentModal';
 import { CourseModal } from './components/CourseModal';
 import { StudentPortalModal } from './components/StudentPortalModal';
-import { BanglaVoicePlayerModal } from './components/BanglaVoicePlayerModal';
-import { CourseVideoPresenter } from './components/CourseVideoPresenter';
-import { CourseCertifications } from './components/CourseCertifications';
 import { AdminPanelModal } from './components/AdminPanelModal';
 import { Course, CourseDuration, StudentEnrollment } from './types';
-import { MessageSquare, Phone, Volume2, Sparkles } from 'lucide-react';
+import { MessageSquare, Phone, Sparkles } from 'lucide-react';
 import { ACADEMY_INFO } from './data/courses';
 import confetti from 'canvas-confetti';
 
@@ -33,7 +26,6 @@ export default function App() {
 
   const [selectedCourseForDetails, setSelectedCourseForDetails] = useState<Course | null>(null);
   const [portalOpen, setPortalOpen] = useState(false);
-  const [voicePlayerOpen, setVoicePlayerOpen] = useState(false);
   const [adminPanelOpen, setAdminPanelOpen] = useState(false);
 
   // Quick toast on successful admission
@@ -90,7 +82,6 @@ export default function App() {
         onOpenEnrollment={() => handleOpenEnrollment()}
         onOpenPortal={() => setPortalOpen(true)}
         onOpenAdmin={() => setAdminPanelOpen(true)}
-        onOpenVoicePlayer={() => setVoicePlayerOpen(true)}
         lang={lang}
         onToggleLang={handleToggleLang}
       />
@@ -99,17 +90,8 @@ export default function App() {
       <main className="flex-1">
         <Hero
           onOpenEnrollment={() => handleOpenEnrollment()}
-          onOpenVoicePlayer={() => setVoicePlayerOpen(true)}
           lang={lang}
         />
-
-        <div id="video-presentation">
-          <CourseVideoPresenter
-            onOpenEnrollment={(cId, dur) => handleOpenEnrollment(cId, dur)}
-            onSelectCourseDetails={course => setSelectedCourseForDetails(course)}
-            lang={lang}
-          />
-        </div>
 
         <CoursesSection
           onOpenEnrollment={(cId, dur) => handleOpenEnrollment(cId, dur)}
@@ -119,28 +101,12 @@ export default function App() {
 
         <WhyChooseUs lang={lang} />
 
-        <LeadershipSection lang={lang} />
-
-        <AcademyUpdatesSection lang={lang} />
-
-        <CourseCertifications
-          onOpenEnrollment={(cId) => handleOpenEnrollment(cId)}
-          lang={lang}
-        />
-
         <AdmissionSteps
           onStartAdmission={() => handleOpenEnrollment()}
           lang={lang}
         />
 
-        <RoiCalculator
-          onEnroll={(cId, dur) => handleOpenEnrollment(cId, dur)}
-          lang={lang}
-        />
-
         <FaqSection lang={lang} />
-
-        <NewsletterSection lang={lang} />
 
         <ContactSection
           onOpenEnrollment={() => handleOpenEnrollment()}
@@ -156,32 +122,18 @@ export default function App() {
         lang={lang}
       />
 
-      {/* Floating Buttons: Voice Player + WhatsApp */}
+      {/* Floating WhatsApp Button */}
       <div className="fixed bottom-6 right-6 z-40 no-print flex flex-col gap-2.5 items-end">
-        {/* Floating Voice Narration Button */}
-        <button
-          type="button"
-          onClick={() => setVoicePlayerOpen(true)}
-          className="group flex items-center gap-2 bg-slate-900/95 hover:bg-slate-900 text-emerald-400 border border-emerald-500/40 px-3.5 py-2.5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 cursor-pointer backdrop-blur-md"
-          title="বাংলা ভয়েস শুনুন (ভিডিও প্রমো)"
-        >
-          <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse shrink-0" />
-          <span className="text-xs font-semibold text-white whitespace-nowrap">
-            বাংলা ভয়েস শুনুন
-          </span>
-        </button>
-
-        {/* WhatsApp Button */}
         <a
-          href="https://wa.me/8801601359646?text=Hello%20Skill%20House,%20I%20am%20interested%20in%20admission"
+          href={ACADEMY_INFO.whatsappGroupLink}
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
-          title="WhatsApp Support"
+          title="Support Skill Group (WhatsApp)"
         >
           <MessageSquare className="w-4 h-4 shrink-0" />
           <span className="text-xs font-semibold hidden group-hover:inline transition-all whitespace-nowrap">
-            হোয়াটসঅ্যাপ
+            Support Group
           </span>
         </a>
       </div>
@@ -198,13 +150,6 @@ export default function App() {
           </div>
         </div>
       )}
-
-      {/* Interactive Bengali Voice Narration Modal */}
-      <BanglaVoicePlayerModal
-        isOpen={voicePlayerOpen}
-        onClose={() => setVoicePlayerOpen(false)}
-        onOpenEnrollment={() => handleOpenEnrollment()}
-      />
 
       {/* 4-Step Interactive Admission Modal */}
       <EnrollmentModal

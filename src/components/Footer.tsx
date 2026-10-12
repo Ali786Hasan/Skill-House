@@ -68,8 +68,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnrollment, onOpenPortal, 
                 </li>
               )}
               <li><a href="#process" className="hover:text-white transition-colors">৪ ধাপের ভর্তি নির্দেশিকা</a></li>
-              <li><a href="#calculator" className="hover:text-white transition-colors">ইনভেস্টমেন্ট ও ROI ক্যালকুলেটর</a></li>
               <li><a href="#why-us" className="hover:text-white transition-colors">কেন আমাদের বেছে নেবেন</a></li>
+              <li><a href="#faq" className="hover:text-white transition-colors">সাধারণ প্রশ্নোত্তর (FAQ)</a></li>
             </ul>
           </div>
 
@@ -87,6 +87,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnrollment, onOpenPortal, 
             </div>
             <div className="pt-1 text-slate-400 text-xs">
               সরাসরি কল: {ACADEMY_INFO.phone} | {ACADEMY_INFO.phoneAlt}
+            </div>
+            <div className="pt-2">
+              <a
+                href={ACADEMY_INFO.whatsappGroupLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-semibold underline"
+              >
+                <span>💬 Support Skill Group (WhatsApp)</span>
+              </a>
             </div>
           </div>
 
